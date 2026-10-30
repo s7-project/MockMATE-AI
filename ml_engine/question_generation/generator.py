@@ -1,138 +1,56 @@
-import re
-import numpy as np
+import random
 
-from functools import lru_cache
-from sentence_transformers import SentenceTransformer
+from ml_engine.question_generation.question_bank import question_bank
 
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+class question_generation:
 
+    def __init__(self, seed=None):
+        self.random = random.Random(seed)
+        self.questions = question_bank
 
-@lru_cache(maxsize=1)
-def load_model():
-
-    print("Loading MockMATE evaluation model...")
-
-    model = SentenceTransformer(
-        MODEL_NAME,
-        device="cpu"
-    )
-
-    print("Evaluation model loaded successfully!")
-
-    return model
-
-
-class AnswerEvaluator:
-
-    def __init__(self):
-        self.model = load_model()
-
-    def calculate_similarity(
+    def get_questions(
         self,
-        candidate_answer,
-        reference_answer
+        topic="Python Basics",
+        difficulty="Beginner",
+        count=5,
+        shuffle=True
     ):
 
-        embeddings = self.model.encode(
-            [candidate_answer, reference_answer],
-            normalize_embeddings=True
-        )
+        if count < 1:
+            raise ValueError("Question count must be at least 1")
 
-        similarity = float(
-            np.dot(embeddings[0], embeddings[1])
-        )
-
-        return max(0.0, min(1.0, similarity))
-
-    def find_keywords(self, answer, keywords):
-
-        normalized_answer = re.sub(
-            r"\s+",
-            " ",
-            answer.lower()
-        )
-
-        matched = []
-
-        for keyword in keywords:
-
-            pattern = (
-                r"(?<!\w)"
-                + re.escape(keyword.lower().strip())
-                + r"(?!\w)"
-            )
-
-            if re.search(pattern, normalized_answer):
-                matched.append(keyword)
-
-        return matched
-
-    def evaluate(
-        self,
-        candidate_answer,
-        reference_answer,
-        keywords
-    ):
-
-        if not candidate_answer.strip():
-            raise ValueError("Candidate answer cannot be empty")
-
-        if not reference_answer.strip():
-            raise ValueError("Reference answer cannot be empty")
-
-        if not keywords:
-            raise ValueError("Keywords cannot be empty")
-
-        similarity = self.calculate_similarity(
-            candidate_answer,
-            reference_answer
-        )
-
-        matched_keywords = self.find_keywords(
-            candidate_answer,
-            keywords
-        )
-
-        keyword_coverage = (
-            len(matched_keywords) / len(keywords)
-        )
-
-        final_score = (
-            similarity * 0.70
-            + keyword_coverage * 0.30
-        ) * 100
-
-        missing_keywords = [
-            keyword
-            for keyword in keywords
-            if keyword not in matched_keywords
+        available_questions = [
+            question
+            for question in self.questions
+            if question["topic"].lower() == topic.lower()
+            and question["difficulty"].lower() == difficulty.lower()
         ]
 
-        if similarity >= 0.75 and keyword_coverage >= 0.5:
-
-            feedback = (
-                "Good answer! Your response covers the main concepts."
+        if not available_questions:
+            raise ValueError(
+                f"No questions found for {topic} - {difficulty}"
             )
 
-        elif similarity >= 0.55:
+        if shuffle:
+            self.random.shuffle(available_questions)
 
-            feedback = (
-                "Partially correct. Add more relevant details."
-            )
+        selected = available_questions[:count]
 
-        else:
+        return [
+            {
+                "id": q["id"],
+                "topic": q["topic"],
+                "difficulty": q["difficulty"],
+                "question": q["question"]
+            }
+            for q in selected
+        ]
 
-            feedback = (
-                "Your answer needs improvement. "
-                "Review the important Python concepts."
-            )
+    def get_question_for_evaluation(self, question_id):
 
-        return {
-            "semantic_similarity": round(similarity * 100, 2),
-            "keyword_coverage": round(keyword_coverage * 100, 2),
-            "final_score": round(final_score, 2),
-            "matched_keywords": matched_keywords,
-            "missing_keywords": missing_keywords,
-            "feedback": feedback
-        }
+        for question in self.questions:
+            if question["id"] == question_id:
+                return question.copy()
+
+        raise ValueError("Question ID not found")
