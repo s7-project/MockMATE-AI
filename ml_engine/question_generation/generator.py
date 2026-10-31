@@ -3,8 +3,7 @@ import random
 from ml_engine.question_generation.question_bank import question_bank
 
 
-class question_generation:
-
+class QuestionGenerator:
     def __init__(self, seed=None):
         self.random = random.Random(seed)
         self.questions = question_bank
