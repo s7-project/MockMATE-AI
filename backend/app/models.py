@@ -6,6 +6,7 @@ from app.database import Base
 
 
 class User(Base):
+
     __tablename__ = "users"
 
     # Primary key
@@ -15,13 +16,13 @@ class User(Base):
         index=True
     )
 
-    # User full name
+    # Full name
     full_name = Column(
         String(100),
         nullable=False
     )
 
-    # Email address (unique)
+    # Email
     email = Column(
         String(150),
         unique=True,
@@ -29,13 +30,13 @@ class User(Base):
         nullable=False
     )
 
-    # Securely hashed password
+    # Hashed password
     hashed_password = Column(
         String(255),
         nullable=False
     )
 
-    # Account creation timestamp
+    # Account creation date
     created_at = Column(
         DateTime,
         server_default=func.now(),

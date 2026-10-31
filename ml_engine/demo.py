@@ -1,70 +1,123 @@
-
-from ml_engine.question_generation.generator import question_generation
+from ml_engine.question_generation.generator import QuestionGenerator
 from ml_engine.answer_evaluation.evaluator import AnswerEvaluator
 
 
 def main():
 
-    generator = question_generation(seed=2)
+    print("\n===================================")
+    print("       MOCKMATE PYTHON INTERVIEW")
+    print("===================================")
 
-    questions = generator.get_questions(
-        topic="Python Basics",
-        difficulty="Beginner",
-        count=1,
-        shuffle=False
-    )
+    topic = input(
+        "\nSelect topic "
+        "(Python Basics / OOP / Functions / Exception Handling / Advanced Python): "
+    ).strip()
 
-    question = questions[0]
+    difficulty = input(
+        "Select difficulty (Beginner / Intermediate / Advanced): "
+    ).strip()
 
-    full_question = generator.get_question_for_evaluation(
-        question["id"]
-    )
+    generator = QuestionGenerator()
 
-    print("\n===== MOCKMATE PYTHON MOCK INTERVIEW =====")
+    try:
 
-    print("\nTopic:", question["topic"])
-    print("Difficulty:", question["difficulty"])
+        questions = generator.get_questions(
+            topic=topic,
+            difficulty=difficulty,
+            count=3
+        )
 
-    print("\nQuestion:")
-    print(question["question"])
+    except ValueError as error:
 
-    candidate_answer = input("\nYour answer: ").strip()
-
-    if not candidate_answer:
-        print("Please enter an answer.")
+        print("\nError:", error)
         return
 
-    print("\nLoading AI evaluation model...")
+    print("\nYour interview is starting!")
 
     evaluator = AnswerEvaluator()
 
-    result = evaluator.evaluate(
-        candidate_answer,
-        full_question["reference_answer"],
-        full_question["keywords"]
-    )
+    total_score = 0
 
-    print("\n===== AI EVALUATION =====")
+    for index, question in enumerate(questions, start=1):
 
-    print("Semantic Similarity:",
-          result["semantic_similarity"], "%")
+        print("\n-----------------------------------")
+        print(f"Question {index}")
+        print("-----------------------------------")
 
-    print("Keyword Coverage:",
-          result["keyword_coverage"], "%")
+        print(question["question"])
 
-    print("Final Score:",
-          result["final_score"], "%")
+        candidate_answer = input(
+            "\nYour answer: "
+        ).strip()
 
-    print("Matched Keywords:",
-          result["matched_keywords"])
+        full_question = generator.get_question_for_evaluation(
+            question["id"]
+        )
 
-    print("Missing Keywords:",
-          result["missing_keywords"])
+        try:
 
-    print("Feedback:",
-          result["feedback"])
+            result = evaluator.evaluate(
+                candidate_answer,
+                full_question["reference_answer"],
+                full_question["keywords"]
+            )
 
-    print("\n===== INTERVIEW COMPLETED =====")
+        except ValueError as error:
+
+            print("Could not evaluate:", error)
+            continue
+
+        total_score += result["final_score"]
+
+        print("\n========== AI EVALUATION ==========")
+
+        print(
+            "Semantic Similarity:",
+            result["semantic_similarity"],
+            "%"
+        )
+
+        print(
+            "Keyword Coverage:",
+            result["keyword_coverage"],
+            "%"
+        )
+
+        print(
+            "Final Score:",
+            result["final_score"],
+            "%"
+        )
+
+        print(
+            "Matched Keywords:",
+            result["matched_keywords"]
+        )
+
+        print(
+            "Missing Keywords:",
+            result["missing_keywords"]
+        )
+
+        print(
+            "Feedback:",
+            result["feedback"]
+        )
+
+        print("\nReference Answer:")
+        print(full_question["reference_answer"])
+
+    if questions:
+
+        average_score = total_score / len(questions)
+
+        print("\n===================================")
+        print("       INTERVIEW COMPLETED")
+        print("===================================")
+
+        print(
+            f"Average Score: {average_score:.2f}%"
+        )
 
 
 if __name__ == "__main__":
