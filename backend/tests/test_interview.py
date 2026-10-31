@@ -1,4 +1,3 @@
-
 import uuid
 
 import pytest
@@ -20,36 +19,27 @@ def auth_headers():
         json={
             "full_name": "API Test User",
             "email": email,
-            "password": "TestPassword123!"
-        }
+            "password": "TestPassword123!",
+        },
     )
 
     assert register_response.status_code == 201
 
     # Login using JSON
     login_response = client.post(
-        "/auth/login",
-        json={
-            "email": email,
-            "password": "TestPassword123!"
-        }
+        "/auth/login", json={"email": email, "password": "TestPassword123!"}
     )
 
     assert login_response.status_code == 200
 
     token = login_response.json()["access_token"]
 
-    return {
-        "Authorization": f"Bearer {token}"
-    }
+    return {"Authorization": f"Bearer {token}"}
 
 
 def test_get_topics(auth_headers):
 
-    response = client.get(
-        "/api/interview/topics",
-        headers=auth_headers
-    )
+    response = client.get("/api/interview/topics", headers=auth_headers)
 
     assert response.status_code == 200
     assert response.json()["success"] is True
@@ -60,11 +50,7 @@ def test_generate_questions(auth_headers):
     response = client.post(
         "/api/interview/generate",
         headers=auth_headers,
-        json={
-            "topic": "Python Basics",
-            "difficulty": "Beginner",
-            "count": 3
-        }
+        json={"topic": "Python Basics", "difficulty": "Beginner", "count": 3},
     )
 
     assert response.status_code == 200
@@ -80,11 +66,7 @@ def test_evaluate_answer(auth_headers):
     questions_response = client.post(
         "/api/interview/generate",
         headers=auth_headers,
-        json={
-            "topic": "Python Basics",
-            "difficulty": "Beginner",
-            "count": 1
-        }
+        json={"topic": "Python Basics", "difficulty": "Beginner", "count": 1},
     )
 
     assert questions_response.status_code == 200
@@ -96,10 +78,8 @@ def test_evaluate_answer(auth_headers):
         headers=auth_headers,
         json={
             "question_id": question["id"],
-            "candidate_answer": (
-                "A list is mutable, whereas a tuple is immutable."
-            )
-        }
+            "candidate_answer": ("A list is mutable, whereas a tuple is immutable."),
+        },
     )
 
     assert response.status_code == 200
@@ -115,11 +95,7 @@ def test_generate_invalid_count(auth_headers):
     response = client.post(
         "/api/interview/generate",
         headers=auth_headers,
-        json={
-            "topic": "Python Basics",
-            "difficulty": "Beginner",
-            "count": 0
-        }
+        json={"topic": "Python Basics", "difficulty": "Beginner", "count": 0},
     )
 
     assert response.status_code == 422
@@ -130,10 +106,7 @@ def test_evaluate_invalid_question(auth_headers):
     response = client.post(
         "/api/interview/evaluate",
         headers=auth_headers,
-        json={
-            "question_id": "INVALID_ID",
-            "candidate_answer": "Some answer"
-        }
+        json={"question_id": "INVALID_ID", "candidate_answer": "Some answer"},
     )
 
     assert response.status_code == 400
@@ -144,4 +117,3 @@ def test_interview_requires_authentication():
     response = client.get("/api/interview/topics")
 
     assert response.status_code == 401
-
