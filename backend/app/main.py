@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import engine, Base
 from app import models
-from app.routers import auth
+from app.routers import auth, interview
 
 
 @asynccontextmanager
@@ -41,6 +41,7 @@ app.add_middleware(
 
 # Authentication routes
 app.include_router(auth.router)
+app.include_router(interview.router)
 
 
 @app.get("/")
