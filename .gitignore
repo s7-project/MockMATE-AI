@@ -149,3 +149,35 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python build files
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Database files (if local-only)
+*.db
+*.sqlite3
