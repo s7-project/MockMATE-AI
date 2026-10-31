@@ -1,9 +1,9 @@
-import whisper
 from pathlib import Path
+
+import whisper
 
 
 class AudioAnalyzer:
-
     def __init__(self, model_name="base"):
         print("Loading Whisper audio model...")
 
@@ -16,24 +16,18 @@ class AudioAnalyzer:
         path = Path(audio_path)
 
         if not path.exists():
-            raise FileNotFoundError(
-                f"Audio file not found: {audio_path}"
-            )
+            raise FileNotFoundError(f"Audio file not found: {audio_path}")
 
-        result = self.model.transcribe(
-            str(path),
-            fp16=False
-        )
+        result = self.model.transcribe(str(path), fp16=False)
 
         return {
             "transcription": result["text"].strip(),
             "language": result.get("language"),
-            "segments": result.get("segments", [])
+            "segments": result.get("segments", []),
         }
 
 
 if __name__ == "__main__":
-
     analyzer = AudioAnalyzer(model_name="base")
 
     audio_file = input("Enter audio file path: ").strip()

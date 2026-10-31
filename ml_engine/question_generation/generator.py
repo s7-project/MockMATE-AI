@@ -9,11 +9,7 @@ class QuestionGenerator:
         self.questions = question_bank
 
     def get_questions(
-        self,
-        topic="Python Basics",
-        difficulty="Beginner",
-        count=5,
-        shuffle=True
+        self, topic="Python Basics", difficulty="Beginner", count=5, shuffle=True
     ):
 
         if count < 1:
@@ -27,9 +23,7 @@ class QuestionGenerator:
         ]
 
         if not available_questions:
-            raise ValueError(
-                f"No questions found for {topic} - {difficulty}"
-            )
+            raise ValueError(f"No questions found for {topic} - {difficulty}")
 
         if shuffle:
             self.random.shuffle(available_questions)
@@ -41,7 +35,7 @@ class QuestionGenerator:
                 "id": q["id"],
                 "topic": q["topic"],
                 "difficulty": q["difficulty"],
-                "question": q["question"]
+                "question": q["question"],
             }
             for q in selected
         ]

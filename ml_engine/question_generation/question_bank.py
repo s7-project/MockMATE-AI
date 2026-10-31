@@ -8,12 +8,7 @@ question_bank = [
             "Python is a high-level, interpreted, general-purpose "
             "programming language known for its simple syntax and readability."
         ),
-        "keywords": [
-            "high-level",
-            "interpreted",
-            "programming language",
-            "syntax"
-        ]
+        "keywords": ["high-level", "interpreted", "programming language", "syntax"],
     },
     {
         "id": "PY002",
@@ -25,12 +20,7 @@ question_bank = [
             "A tuple is immutable, meaning its elements cannot be changed "
             "after creation."
         ),
-        "keywords": [
-            "list",
-            "tuple",
-            "mutable",
-            "immutable"
-        ]
+        "keywords": ["list", "tuple", "mutable", "immutable"],
     },
     {
         "id": "PY003",
@@ -41,12 +31,7 @@ question_bank = [
             "A dictionary is a built-in data structure that stores "
             "information as key-value pairs. Keys must be unique."
         ),
-        "keywords": [
-            "dictionary",
-            "key",
-            "value",
-            "unique"
-        ]
+        "keywords": ["dictionary", "key", "value", "unique"],
     },
     {
         "id": "PY004",
@@ -58,12 +43,7 @@ question_bank = [
             "whereas the is operator checks whether two references "
             "point to the same object in memory."
         ),
-        "keywords": [
-            "value",
-            "identity",
-            "memory",
-            "object"
-        ]
+        "keywords": ["value", "identity", "memory", "object"],
     },
     {
         "id": "PY005",
@@ -75,12 +55,7 @@ question_bank = [
             "that allows a child class to reuse and extend attributes "
             "and methods of a parent class."
         ),
-        "keywords": [
-            "inheritance",
-            "parent class",
-            "child class",
-            "methods"
-        ]
+        "keywords": ["inheritance", "parent class", "child class", "methods"],
     },
     {
         "id": "PY006",
@@ -92,12 +67,7 @@ question_bank = [
             "Different classes can implement methods with the same name "
             "in different ways."
         ),
-        "keywords": [
-            "polymorphism",
-            "multiple forms",
-            "methods",
-            "classes"
-        ]
+        "keywords": ["polymorphism", "multiple forms", "methods", "classes"],
     },
     {
         "id": "PY007",
@@ -108,12 +78,7 @@ question_bank = [
             "Encapsulation is the process of combining data and methods "
             "inside a class and controlling access to its internal state."
         ),
-        "keywords": [
-            "encapsulation",
-            "class",
-            "data",
-            "methods"
-        ]
+        "keywords": ["encapsulation", "class", "data", "methods"],
     },
     {
         "id": "PY008",
@@ -125,12 +90,7 @@ question_bank = [
             "The except block handles the exception so the program "
             "can respond without terminating unexpectedly."
         ),
-        "keywords": [
-            "try",
-            "except",
-            "exception",
-            "error"
-        ]
+        "keywords": ["try", "except", "exception", "error"],
     },
     {
         "id": "PY009",
@@ -141,12 +101,7 @@ question_bank = [
             "A lambda function is a small anonymous function defined "
             "using the lambda keyword. It can contain a single expression."
         ),
-        "keywords": [
-            "lambda",
-            "anonymous",
-            "function",
-            "expression"
-        ]
+        "keywords": ["lambda", "anonymous", "function", "expression"],
     },
     {
         "id": "PY010",
@@ -158,12 +113,7 @@ question_bank = [
             "An argument is the actual value passed to the function "
             "when it is called."
         ),
-        "keywords": [
-            "parameter",
-            "argument",
-            "function",
-            "value"
-        ]
+        "keywords": ["parameter", "argument", "function", "value"],
     },
     {
         "id": "PY011",
@@ -174,12 +124,7 @@ question_bank = [
             "Decorators are functions that modify or extend the behavior "
             "of another function or method without changing its original code."
         ),
-        "keywords": [
-            "decorator",
-            "function",
-            "behavior",
-            "wrapper"
-        ]
+        "keywords": ["decorator", "function", "behavior", "wrapper"],
     },
     {
         "id": "PY012",
@@ -191,11 +136,6 @@ question_bank = [
             "with the yield keyword. It produces values lazily, "
             "one at a time, which can save memory."
         ),
-        "keywords": [
-            "generator",
-            "yield",
-            "iterator",
-            "memory"
-        ]
-    }
+        "keywords": ["generator", "yield", "iterator", "memory"],
+    },
 ]
