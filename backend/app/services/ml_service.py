@@ -13,10 +13,25 @@ class MLService:
         self._questions: dict[str, object] = {}
 
     def generate_questions(
-        self, topic: str = "Python Basics", difficulty: str = "Beginner", count: int = 5
+        self,
+        topic: str = "Python Basics",
+        difficulty: str = "Beginner",
+        count: int = 5,
+        role: str | None = None,
+        query: str | None = None,
+        allow_partial: bool = False,
+        question_types: list[str] | None = None,
     ) -> list[dict[str, object]]:
         result = self.interview_service.create_interview(
-            GenerationRequest(topic=topic, difficulty=difficulty, count=count)
+            GenerationRequest(
+                topic=topic,
+                difficulty=difficulty,
+                count=count,
+                role=role,
+                query=query,
+                allow_partial=allow_partial,
+                question_types=question_types or [],
+            )
         )
         response: list[dict[str, object]] = []
         for question in result.questions:
@@ -30,6 +45,10 @@ class MLService:
                     "question": question.question,
                     "reference_answer": question.reference_answer,
                     "keywords": question.key_concepts,
+                    "dataset_question_id": question.dataset_question_id,
+                    "question_type": question.question_type,
+                    "roles": question.roles,
+                    "source_name": question.source_name,
                 }
             )
         return response
@@ -40,7 +59,8 @@ class MLService:
         question = self._questions.get(question_id)
         if question is None:
             raise ResourceNotFoundError(
-                "Question not found in this backend process. Generate the interview again."
+                "Question not found in this backend process. "
+                "Generate the interview again."
             )
         evaluation = self.interview_service.evaluate_answer(
             EvaluationRequest(question=question, candidate_answer=candidate_answer)
@@ -53,7 +73,7 @@ class MLService:
         }
 
     def get_available_topics(self) -> dict[str, list[str]]:
-        return self.interview_service.generator.available_topics()
+        return self.interview_service.retriever.available_topics()
 
 
 # Lightweight initialization: no transformer, audio, or video models are loaded here.

@@ -1,5 +1,1 @@
-numpy
-sentence-transformers
-openai-whisper
-opencv-python
-mediapipe
+# Core ML package dependencies. Install optional audio/video extras from pyproject.toml.\npydantic>=2.7,<3\npydantic-settings>=2.2,<3\n

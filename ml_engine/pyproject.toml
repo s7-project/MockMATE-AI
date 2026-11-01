@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mockmate-ml"
-version = "0.2.0"
-description = "Interview question generation and answer evaluation engine for MockMATE"
+version = "0.3.0"
+description = "Dataset-driven interview retrieval and answer evaluation engine for MockMATE"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -13,9 +13,10 @@ dependencies = [
   "pydantic-settings>=2.2,<3",
 ]
 
+[project.scripts]
+mockmate-ingest = "mockmate_ml.data.ingest:main"
+
 [project.optional-dependencies]
-gemini = ["google-genai>=1.0,<2"]
-semantic = ["sentence-transformers>=3.0"]
 audio = ["openai-whisper"]
 video = ["opencv-python", "mediapipe"]
 dev = [
@@ -44,3 +45,6 @@ select = ["E", "F", "I", "B", "UP"]
 python_version = "3.11"
 strict = true
 mypy_path = "src"
+
+[tool.setuptools.package-data]
+mockmate_ml = ["data/datasets/*.json"]

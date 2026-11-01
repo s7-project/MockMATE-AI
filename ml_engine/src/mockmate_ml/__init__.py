@@ -1,3 +1,3 @@
-"""MockMATE's independent interview intelligence package."""
+"""MockMATE dataset-driven interview intelligence package."""
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"

@@ -27,6 +27,9 @@ class GenerationRequest(BaseModel):
     interview_type: InterviewType = InterviewType.TECHNICAL
     role: str | None = Field(default=None, max_length=120)
     experience_years: float | None = Field(default=None, ge=0, le=50)
+    query: str | None = Field(default=None, min_length=2, max_length=300)
+    question_types: list[str] = Field(default_factory=list, max_length=10)
+    allow_partial: bool = False
 
     @field_validator("topic")
     @classmethod
@@ -53,13 +56,18 @@ class InterviewQuestion(BaseModel):
     reference_answer: str = Field(min_length=10, max_length=6000)
     key_concepts: list[str] = Field(min_length=1, max_length=20)
     evaluation_rubric: list[EvaluationCriterion] = Field(default_factory=list)
+    dataset_question_id: str | None = None
+    roles: list[str] = Field(default_factory=list)
+    tags: list[str] = Field(default_factory=list)
+    source_name: str = "MockMATE dataset"
 
 
 class GenerationResult(BaseModel):
     interview_id: UUID = Field(default_factory=uuid4)
     questions: list[InterviewQuestion] = Field(min_length=1)
     provider: str = "question_bank"
-    generation_mode: str = "fallback"
+    generation_mode: str = "dataset_retrieval"
+    dataset_name: str = "MockMATE Technical Question Dataset"
 
 
 class EvaluationRequest(BaseModel):
