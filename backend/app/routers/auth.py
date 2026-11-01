@@ -1,3 +1,5 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
@@ -20,7 +22,7 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 @router.post(
     "/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED
 )
-def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
+def register_user(user_data: UserCreate, db: Annotated[Session, Depends(get_db)]):
 
     # Check existing email
     existing_user = (
@@ -60,7 +62,7 @@ def register_user(user_data: UserCreate, db: Session = Depends(get_db)):
 
 
 @router.post("/login", response_model=TokenResponse)
-def login_user(user_data: UserLogin, db: Session = Depends(get_db)):
+def login_user(user_data: UserLogin, db: Annotated[Session, Depends(get_db)]):
 
     # Find user
     user = (
@@ -85,6 +87,6 @@ def login_user(user_data: UserLogin, db: Session = Depends(get_db)):
 
 
 @router.get("/me", response_model=UserResponse)
-def get_profile(current_user: User = Depends(get_current_user)):
+def get_profile(current_user: Annotated[User, Depends(get_current_user)]):
 
     return current_user

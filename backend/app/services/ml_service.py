@@ -1,7 +1,5 @@
 """Thin adapter between FastAPI routes and the independent ML package."""
 
-from uuid import UUID
-
 from mockmate_ml.exceptions import ResourceNotFoundError
 from mockmate_ml.schemas.interview import EvaluationRequest, GenerationRequest
 from mockmate_ml.services.interview_service import InterviewService

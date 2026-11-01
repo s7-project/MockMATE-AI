@@ -15,7 +15,10 @@ def _question():
 
 def test_keyword_matching_respects_word_boundaries() -> None:
     evaluator = AnswerEvaluator()
-    assert evaluator.find_keywords("A list is mutable", ["list", "is", "tuple"]) == ["list", "is"]
+    assert evaluator.find_keywords("A list is mutable", ["list", "is", "tuple"]) == [
+        "list",
+        "is",
+    ]
 
 
 def test_evaluation_reports_missing_concepts() -> None:

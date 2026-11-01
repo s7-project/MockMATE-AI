@@ -29,11 +29,20 @@ class AnswerEvaluator:
         missing = [concept for concept in concepts if concept not in matched]
 
         if coverage >= 0.8:
-            feedback = "The answer mentions most of the expected concepts. Verify technical accuracy and depth."
+            feedback = (
+                "The answer mentions most of the expected concepts. "
+                "Verify technical accuracy and depth."
+            )
         elif coverage >= 0.5:
-            feedback = "The answer covers some expected concepts; explain the missing concepts more clearly."
+            feedback = (
+                "The answer covers some expected concepts; explain the missing "
+                "concepts more clearly."
+            )
         else:
-            feedback = "The answer needs more relevant detail. Address the key concepts listed for this question."
+            feedback = (
+                "The answer needs more relevant detail. Address the key concepts "
+                "listed for this question."
+            )
 
         return EvaluationResult(
             question_id=request.question.id,

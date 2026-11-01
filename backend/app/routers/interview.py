@@ -1,7 +1,10 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
 from app.dependencies import get_current_user
+from app.models import User
 from app.services.ml_service import ml_service
 
 router = APIRouter(prefix="/api/interview", tags=["Interview"])
@@ -26,7 +29,8 @@ class EvaluateRequest(BaseModel):
 
 @router.post("/generate")
 def generate_questions(
-    request: GenerateRequest, current_user=Depends(get_current_user)
+    request: GenerateRequest,
+    current_user: Annotated[User, Depends(get_current_user)],
 ):
 
     try:
@@ -44,7 +48,10 @@ def generate_questions(
 
 
 @router.post("/evaluate")
-def evaluate_answer(request: EvaluateRequest, current_user=Depends(get_current_user)):
+def evaluate_answer(
+    request: EvaluateRequest,
+    current_user: Annotated[User, Depends(get_current_user)],
+):
 
     try:
         result = ml_service.evaluate_answer(
@@ -61,6 +68,6 @@ def evaluate_answer(request: EvaluateRequest, current_user=Depends(get_current_u
 
 
 @router.get("/topics")
-def get_topics(current_user=Depends(get_current_user)):
+def get_topics(current_user: Annotated[User, Depends(get_current_user)]):
 
     return {"success": True, "topics": ml_service.get_available_topics()}

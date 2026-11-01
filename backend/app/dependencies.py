@@ -1,3 +1,5 @@
+from typing import Annotated
+
 import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
@@ -13,8 +15,8 @@ bearer_scheme = HTTPBearer()
 
 # Get current logged-in user
 def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
-    db: Session = Depends(get_db),
+    credentials: Annotated[HTTPAuthorizationCredentials, Depends(bearer_scheme)],
+    db: Annotated[Session, Depends(get_db)],
 ):
 
     credentials_exception = HTTPException(
