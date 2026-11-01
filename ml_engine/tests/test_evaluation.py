@@ -2,13 +2,18 @@ import pytest
 from pydantic import ValidationError
 
 from mockmate_ml.evaluation.evaluator import AnswerEvaluator
-from mockmate_ml.generation.generator import QuestionGenerator
+from mockmate_ml.retrieval.engine import QuestionRetriever
 from mockmate_ml.schemas.interview import EvaluationRequest, GenerationRequest
 
 
 def _question():
-    result = QuestionGenerator(seed=1).generate(
-        GenerationRequest(topic="Python Basics", difficulty="Beginner", count=20)
+    result = QuestionRetriever(seed=1).generate(
+        GenerationRequest(
+            topic="Python Basics",
+            difficulty="Beginner",
+            count=20,
+            allow_partial=True,
+        )
     )
     return next(q for q in result.questions if "list and a tuple" in q.question.lower())
 

@@ -15,3 +15,7 @@ class EvaluationError(MockMATEError, ValueError):
 
 class ResourceNotFoundError(MockMATEError, ValueError):
     """Raised when a requested interview resource does not exist."""
+
+
+class DatasetValidationError(MockMATEError, ValueError):
+    """Raised when an imported or packaged dataset is invalid."""

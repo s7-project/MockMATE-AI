@@ -1,8 +1,8 @@
 import pytest
 
-from mockmate_ml.generation.generator import QuestionGenerator
+from mockmate_ml.retrieval.engine import QuestionRetriever
 
 
 @pytest.fixture
-def generator() -> QuestionGenerator:
-    return QuestionGenerator(seed=7)
+def generator() -> QuestionRetriever:
+    return QuestionRetriever(seed=7)

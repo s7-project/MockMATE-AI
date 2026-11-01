@@ -2,7 +2,6 @@
 
 from functools import lru_cache
 
-from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -13,9 +12,6 @@ class Settings(BaseSettings):
 
     environment: str = "development"
     log_level: str = "INFO"
-    llm_provider: str = "none"
-    gemini_api_key: SecretStr | None = None
-    gemini_model: str = "gemini-2.5-flash"
 
 
 @lru_cache(maxsize=1)

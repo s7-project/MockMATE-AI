@@ -1,0 +1,1184 @@
+{
+  "dataset_name": "MockMATE Technical Question Dataset",
+  "dataset_version": "1.0.0",
+  "description": "Starter technical interview dataset authored for the MockMATE project. External datasets can be ingested through the dataset ingestion utilities after provenance and licence review.",
+  "questions": [
+    {
+      "question_id": "PY001",
+      "question": "What is Python and what are its main characteristics?",
+      "topic": "Python Basics",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "high-level",
+        "interpreted",
+        "readability",
+        "general-purpose"
+      ],
+      "reference_answer": "Python is a high-level, general-purpose programming language. It is commonly described as interpreted, emphasizes readable syntax, and supports procedural, object-oriented, and functional programming styles.",
+      "key_concepts": [
+        "interpreted",
+        "high-level",
+        "readability",
+        "general-purpose"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY002",
+      "question": "What is the difference between a list and a tuple in Python?",
+      "topic": "Python Basics",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "list",
+        "tuple",
+        "mutable",
+        "immutable"
+      ],
+      "reference_answer": "A list is mutable, so its contents can be changed after creation. A tuple is immutable, so its structure cannot be changed after creation. Lists are commonly used for collections that change, while tuples suit fixed records.",
+      "key_concepts": [
+        "list",
+        "tuple",
+        "mutable",
+        "immutable"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY003",
+      "question": "How do Python dictionaries store and retrieve values?",
+      "topic": "Python Basics",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "dictionary",
+        "key-value",
+        "hash table",
+        "hashable"
+      ],
+      "reference_answer": "A dictionary stores mappings from unique hashable keys to values. Python uses hashing to locate entries efficiently on average, and keys must maintain a stable hash and equality behaviour.",
+      "key_concepts": [
+        "dictionary",
+        "key-value",
+        "hashable keys",
+        "lookup"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY004",
+      "question": "What is the difference between == and is in Python?",
+      "topic": "Python Basics",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "equality",
+        "identity",
+        "object reference"
+      ],
+      "reference_answer": "The == operator checks value equality by invoking equality behaviour. The is operator checks object identity, meaning whether both references point to the same object. Identity comparisons are commonly used for singletons such as None.",
+      "key_concepts": [
+        "equality",
+        "identity",
+        "object"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY005",
+      "question": "What is the difference between a parameter and an argument?",
+      "topic": "Python Basics",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer"
+      ],
+      "tags": [
+        "parameter",
+        "argument",
+        "function definition",
+        "function call"
+      ],
+      "reference_answer": "A parameter is a named variable in a function definition. An argument is the actual value or expression supplied when the function is called.",
+      "key_concepts": [
+        "parameter",
+        "argument",
+        "function"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY006",
+      "question": "What is exception handling and when should you use try and except?",
+      "topic": "Exception Handling",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "exception",
+        "try",
+        "except",
+        "specific"
+      ],
+      "reference_answer": "Exception handling allows a program to respond to runtime errors. Code that may raise an exception is placed in a try block, and matching except clauses handle specific exception types. Catching specific exceptions is preferable to catching everything indiscriminately.",
+      "key_concepts": [
+        "exception",
+        "try",
+        "except",
+        "specific exception"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY007",
+      "question": "What is a Python lambda function and what are its limitations?",
+      "topic": "Functions",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer"
+      ],
+      "tags": [
+        "lambda",
+        "anonymous",
+        "expression"
+      ],
+      "reference_answer": "A lambda expression creates a small anonymous function consisting of a single expression. It is useful for short callbacks or key functions, but regular def functions are clearer for multi-step logic, documentation, and complex behaviour.",
+      "key_concepts": [
+        "lambda",
+        "anonymous function",
+        "single expression"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY008",
+      "question": "What is a generator in Python and how does yield work?",
+      "topic": "Functions",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Data Engineer"
+      ],
+      "tags": [
+        "generator",
+        "yield",
+        "lazy",
+        "iterator"
+      ],
+      "reference_answer": "A generator is an iterator commonly created by a function containing yield. Each iteration resumes execution and produces the next value, allowing lazy processing without storing the entire result sequence in memory.",
+      "key_concepts": [
+        "generator",
+        "yield",
+        "lazy evaluation",
+        "iterator"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY009",
+      "question": "Explain decorators in Python and give a practical use case.",
+      "topic": "Functions",
+      "difficulty": "Advanced",
+      "question_type": "scenario",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "decorator",
+        "wrapper",
+        "higher-order function",
+        "logging"
+      ],
+      "reference_answer": "A decorator is a callable that takes another callable and returns a modified or wrapped callable. Decorators are commonly used for logging, authorization, caching, and timing while keeping cross-cutting behaviour separate from core function logic.",
+      "key_concepts": [
+        "decorator",
+        "wrapper",
+        "higher-order function",
+        "cross-cutting concern"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY010",
+      "question": "What is inheritance in object-oriented programming?",
+      "topic": "Object-Oriented Programming",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "inheritance",
+        "parent class",
+        "child class",
+        "reuse"
+      ],
+      "reference_answer": "Inheritance allows a child class to derive attributes and methods from a parent class. It supports reuse and specialization, although composition can be preferable when a strict is-a relationship does not exist.",
+      "key_concepts": [
+        "inheritance",
+        "parent class",
+        "child class",
+        "reuse"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY011",
+      "question": "Explain polymorphism with a Python example.",
+      "topic": "Object-Oriented Programming",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer"
+      ],
+      "tags": [
+        "polymorphism",
+        "interface",
+        "implementation"
+      ],
+      "reference_answer": "Polymorphism allows different object types to be used through a common interface while providing type-specific behaviour. In Python, unrelated classes can implement the same method or protocol and be used interchangeably by client code.",
+      "key_concepts": [
+        "polymorphism",
+        "same interface",
+        "different implementations"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY012",
+      "question": "What is encapsulation and how is it represented in Python?",
+      "topic": "Object-Oriented Programming",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Python Developer"
+      ],
+      "tags": [
+        "encapsulation",
+        "state",
+        "methods",
+        "underscore"
+      ],
+      "reference_answer": "Encapsulation groups data and behaviour and controls how internal state is accessed. Python uses conventions such as a leading underscore for non-public attributes and properties for controlled access; it does not enforce private access in the same way as some languages.",
+      "key_concepts": [
+        "encapsulation",
+        "state",
+        "methods",
+        "access convention"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "PY013",
+      "question": "When would you choose composition over inheritance?",
+      "topic": "Object-Oriented Programming",
+      "difficulty": "Advanced",
+      "question_type": "scenario",
+      "roles": [
+        "Python Developer",
+        "Backend Developer"
+      ],
+      "tags": [
+        "composition",
+        "inheritance",
+        "has-a",
+        "coupling"
+      ],
+      "reference_answer": "Composition is preferable when an object should delegate work to contained collaborators rather than claim a subtype relationship. It often reduces tight coupling, makes behaviour easier to replace, and supports flexible combinations of capabilities.",
+      "key_concepts": [
+        "composition",
+        "inheritance",
+        "has-a",
+        "coupling"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "API001",
+      "question": "What is a REST API and what constraints characterize REST?",
+      "topic": "Web APIs",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer",
+        "Python Developer"
+      ],
+      "tags": [
+        "REST",
+        "resource",
+        "HTTP",
+        "stateless"
+      ],
+      "reference_answer": "REST is an architectural style for networked applications. Common constraints include client-server separation, stateless requests, cacheability, a uniform interface, layered systems, and optionally code on demand. APIs commonly expose resources through HTTP methods and representations.",
+      "key_concepts": [
+        "REST",
+        "resources",
+        "HTTP",
+        "stateless"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "API002",
+      "question": "Explain the difference between PUT and PATCH in HTTP.",
+      "topic": "Web APIs",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer"
+      ],
+      "tags": [
+        "PUT",
+        "PATCH",
+        "replacement",
+        "partial update",
+        "idempotent"
+      ],
+      "reference_answer": "PUT generally creates or replaces the state of a resource at a known URI and is defined as idempotent. PATCH applies partial modifications. PATCH semantics depend on the patch format and are not automatically idempotent.",
+      "key_concepts": [
+        "PUT",
+        "PATCH",
+        "replacement",
+        "partial update",
+        "idempotent"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "API003",
+      "question": "How would you validate request data in a FastAPI endpoint?",
+      "topic": "FastAPI",
+      "difficulty": "Intermediate",
+      "question_type": "scenario",
+      "roles": [
+        "Backend Developer",
+        "Python Developer"
+      ],
+      "tags": [
+        "Pydantic",
+        "request model",
+        "validation",
+        "422"
+      ],
+      "reference_answer": "Define a Pydantic model for the request body and use it as the endpoint parameter type. FastAPI parses and validates incoming data against the model and returns a validation error response when the payload is invalid. Add domain-level validation for rules beyond field types.",
+      "key_concepts": [
+        "Pydantic",
+        "request model",
+        "validation",
+        "HTTP 422"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "API004",
+      "question": "What is dependency injection in FastAPI and why is it useful?",
+      "topic": "FastAPI",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer",
+        "Python Developer"
+      ],
+      "tags": [
+        "dependency injection",
+        "Depends",
+        "reusability",
+        "testing"
+      ],
+      "reference_answer": "FastAPI dependency injection uses Depends to declare required components such as database sessions, authentication context, and shared services. It centralizes setup, supports dependency overrides in tests, and reduces coupling between route handlers and infrastructure.",
+      "key_concepts": [
+        "dependency injection",
+        "Depends",
+        "reusability",
+        "testing"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "API005",
+      "question": "How would you handle errors consistently in a REST API?",
+      "topic": "Web APIs",
+      "difficulty": "Intermediate",
+      "question_type": "scenario",
+      "roles": [
+        "Backend Developer"
+      ],
+      "tags": [
+        "HTTP status",
+        "exception handler",
+        "error schema",
+        "logging"
+      ],
+      "reference_answer": "Use appropriate HTTP status codes, a consistent error response schema, and centralized exception handlers for known application errors. Log diagnostic details server-side while avoiding exposure of secrets or internal stack traces to clients.",
+      "key_concepts": [
+        "HTTP status codes",
+        "exception handlers",
+        "consistent schema",
+        "logging"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "SQL001",
+      "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+      "topic": "SQL",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer",
+        "Data Engineer"
+      ],
+      "tags": [
+        "inner join",
+        "left join",
+        "matching",
+        "unmatched"
+      ],
+      "reference_answer": "INNER JOIN returns rows with matching records on both sides. LEFT JOIN returns every row from the left table and matching rows from the right table, using NULL for right-side columns when no match exists.",
+      "key_concepts": [
+        "INNER JOIN",
+        "LEFT JOIN",
+        "matching rows",
+        "unmatched rows"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "SQL002",
+      "question": "What is database normalization and why is it used?",
+      "topic": "SQL",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer",
+        "Data Engineer"
+      ],
+      "tags": [
+        "normalization",
+        "redundancy",
+        "anomalies",
+        "functional dependency"
+      ],
+      "reference_answer": "Normalization organizes relational data to reduce unnecessary duplication and update anomalies. Normal forms such as 1NF, 2NF, and 3NF impose progressively stronger constraints based on attributes and functional dependencies. Some systems selectively denormalize for performance.",
+      "key_concepts": [
+        "normalization",
+        "redundancy",
+        "functional dependency",
+        "update anomalies"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "SQL003",
+      "question": "How would you find duplicate email addresses in a users table?",
+      "topic": "SQL",
+      "difficulty": "Beginner",
+      "question_type": "problem_solving",
+      "roles": [
+        "Backend Developer",
+        "Data Engineer"
+      ],
+      "tags": [
+        "group by",
+        "having",
+        "count",
+        "duplicate"
+      ],
+      "reference_answer": "Group rows by email and filter groups with HAVING COUNT(*) greater than one. For example: SELECT email FROM users GROUP BY email HAVING COUNT(*) > 1. Consider whether comparisons should be case-insensitive.",
+      "key_concepts": [
+        "GROUP BY",
+        "HAVING",
+        "COUNT",
+        "duplicate"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "SQL004",
+      "question": "What is an index and what trade-offs does it introduce?",
+      "topic": "SQL",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "Backend Developer",
+        "Data Engineer"
+      ],
+      "tags": [
+        "index",
+        "query performance",
+        "write",
+        "storage"
+      ],
+      "reference_answer": "An index is a data structure that helps the database locate rows without scanning the entire table. It can speed up reads and joins, but consumes storage and adds maintenance cost to inserts, updates, and deletes. Indexes should be guided by query patterns.",
+      "key_concepts": [
+        "index",
+        "query performance",
+        "write overhead",
+        "storage"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "ML001",
+      "question": "What is the difference between supervised and unsupervised learning?",
+      "topic": "Machine Learning",
+      "difficulty": "Beginner",
+      "question_type": "conceptual",
+      "roles": [
+        "ML Engineer",
+        "Data Scientist"
+      ],
+      "tags": [
+        "supervised",
+        "labelled",
+        "unsupervised",
+        "unlabelled"
+      ],
+      "reference_answer": "Supervised learning trains on labelled examples to learn a mapping from inputs to known targets, such as classification or regression. Unsupervised learning works with data without target labels to discover structure, such as clusters or lower-dimensional representations.",
+      "key_concepts": [
+        "supervised learning",
+        "labelled data",
+        "unsupervised learning",
+        "unlabelled data"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "ML002",
+      "question": "Explain overfitting and describe two ways to reduce it.",
+      "topic": "Machine Learning",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "ML Engineer",
+        "Data Scientist"
+      ],
+      "tags": [
+        "overfitting",
+        "generalization",
+        "regularization",
+        "cross-validation"
+      ],
+      "reference_answer": "Overfitting occurs when a model learns noise or details specific to training data and performs poorly on unseen data. It can be reduced with regularization, simpler models, more representative data, early stopping, data augmentation, or careful cross-validation.",
+      "key_concepts": [
+        "overfitting",
+        "training performance",
+        "generalization",
+        "regularization"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "ML003",
+      "question": "What is the bias-variance trade-off?",
+      "topic": "Machine Learning",
+      "difficulty": "Advanced",
+      "question_type": "conceptual",
+      "roles": [
+        "ML Engineer",
+        "Data Scientist"
+      ],
+      "tags": [
+        "bias",
+        "variance",
+        "underfitting",
+        "overfitting"
+      ],
+      "reference_answer": "Bias is error from overly restrictive assumptions and can cause underfitting. Variance is sensitivity to training data and can cause overfitting. Model selection seeks a balance that minimizes expected generalization error.",
+      "key_concepts": [
+        "bias",
+        "variance",
+        "underfitting",
+        "overfitting"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "ML004",
+      "question": "Why should training, validation, and test datasets be separated?",
+      "topic": "Machine Learning",
+      "difficulty": "Intermediate",
+      "question_type": "conceptual",
+      "roles": [
+        "ML Engineer",
+        "Data Scientist"
+      ],
+      "tags": [
+        "training",
+        "validation",
+        "test",
+        "data leakage"
+      ],
+      "reference_answer": "The training set fits model parameters. The validation set supports model selection and hyperparameter tuning. The test set provides a final estimate of generalization on data not used during development. Repeatedly tuning against the test set causes leakage into evaluation.",
+      "key_concepts": [
+        "training set",
+        "validation set",
+        "test set",
+        "data leakage"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    },
+    {
+      "question_id": "ML005",
+      "question": "What is data leakage and how can it invalidate model evaluation?",
+      "topic": "Machine Learning",
+      "difficulty": "Advanced",
+      "question_type": "scenario",
+      "roles": [
+        "ML Engineer",
+        "Data Scientist"
+      ],
+      "tags": [
+        "data leakage",
+        "target",
+        "train test",
+        "generalization"
+      ],
+      "reference_answer": "Data leakage occurs when information unavailable at prediction time influences training or evaluation. It can produce overly optimistic metrics and poor real-world performance. Prevent it with time-aware or entity-aware splits, preprocessing fitted only on training data, and careful feature review.",
+      "key_concepts": [
+        "data leakage",
+        "target information",
+        "train-test split",
+        "generalization"
+      ],
+      "source_name": "MockMATE starter curated dataset",
+      "source_url": null,
+      "license": "internal-project-content; verify before redistribution",
+      "evaluation_rubric": [
+        {
+          "name": "technical_accuracy",
+          "description": "Core technical statements are correct.",
+          "weight": 0.4
+        },
+        {
+          "name": "conceptual_completeness",
+          "description": "The answer covers the important concepts.",
+          "weight": 0.35
+        },
+        {
+          "name": "relevance",
+          "description": "The answer directly addresses the question.",
+          "weight": 0.25
+        }
+      ]
+    }
+  ]
+}

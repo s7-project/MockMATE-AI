@@ -14,9 +14,13 @@ router = APIRouter(prefix="/api/interview", tags=["Interview"])
 
 
 class GenerateRequest(BaseModel):
-    topic: str = "Python Basics"
+    topic: str = Field(default="Python Basics", min_length=2, max_length=120)
     difficulty: str = "Beginner"
     count: int = Field(default=5, ge=1, le=20)
+    role: str | None = Field(default=None, max_length=120)
+    query: str | None = Field(default=None, min_length=2, max_length=300)
+    allow_partial: bool = False
+    question_types: list[str] = Field(default_factory=list, max_length=10)
 
 
 class EvaluateRequest(BaseModel):
@@ -35,7 +39,13 @@ def generate_questions(
 
     try:
         questions = ml_service.generate_questions(
-            topic=request.topic, difficulty=request.difficulty, count=request.count
+            topic=request.topic,
+            difficulty=request.difficulty,
+            count=request.count,
+            role=request.role,
+            query=request.query,
+            allow_partial=request.allow_partial,
+            question_types=request.question_types,
         )
 
         return {"success": True, "count": len(questions), "questions": questions}
