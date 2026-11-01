@@ -25,9 +25,8 @@ jobs:
       - name: Check imports and bundled dataset
         run: |
           python -c "import mockmate_ml"
-          python -c "from mockmate_ml.data.loader import load_default_dataset"
+          python -c "from mockmate_ml.data.loader import load_default_dataset; assert len(load_default_dataset().questions) >= 20"
           python -c "from mockmate_ml.retrieval.engine import QuestionRetriever"
-          python -c "assert len(load_default_dataset().questions) >= 20"
 
       - name: Run ML tests
         run: python -m pytest ml_engine/tests -v
@@ -62,4 +61,5 @@ jobs:
       - name: Run backend tests
         env:
           PYTHONPATH: ml_engine/src:backend
+          SECRET_KEY: mockmate-ci-only-secret-key-do-not-use-in-production
         run: python -m pytest backend/tests -v
