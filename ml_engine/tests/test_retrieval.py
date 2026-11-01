@@ -89,7 +89,6 @@ def test_query_ranks_relevant_questions(generator: QuestionRetriever) -> None:
     assert result.questions[0].dataset_question_id == "PY003"
 
 
-
 def test_question_type_filter(generator: QuestionRetriever) -> None:
     result = generator.retrieve(
         GenerationRequest(

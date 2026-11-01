@@ -12,7 +12,8 @@ class DatasetQuestion(BaseModel):
 
     model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
 
-    question_id: str = Field(min_length=3, max_length=100, pattern=r"^[A-Za-z0-9_.:-]+$"
+    question_id: str = Field(
+        min_length=3, max_length=100, pattern=r"^[A-Za-z0-9_.:-]+$"
     )
     question: str = Field(min_length=10, max_length=2000)
     topic: str = Field(min_length=2, max_length=120)

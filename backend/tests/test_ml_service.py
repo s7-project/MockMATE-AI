@@ -11,7 +11,6 @@ def test_backend_adapter_generates_and_evaluates_question() -> None:
     assert "evaluation" in result
 
 
-
 def test_backend_adapter_supports_role_filtered_retrieval() -> None:
     service = MLService()
     questions = service.generate_questions(

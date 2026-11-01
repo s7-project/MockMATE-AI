@@ -1,12 +1,11 @@
-import json
 
 import pytest
 from pydantic import ValidationError
 
 from mockmate_ml.data.loader import (
     ingest_records,
-    load_default_dataset,
     load_dataset,
+    load_default_dataset,
     write_dataset,
 )
 from mockmate_ml.exceptions import DatasetValidationError
@@ -60,16 +59,18 @@ def test_external_import_requires_provenance() -> None:
 
 def test_external_import_normalizes_common_fields() -> None:
     dataset = ingest_records(
-        [{
-            "id": "EXT-1",
-            "prompt": "What is a primary key in SQL?",
-            "answer": "A primary key uniquely identifies each row in a table.",
-            "category": "SQL",
-            "difficulty": "Beginner",
-            "keywords": "primary key, unique, row",
-            "source_name": "Example source",
-            "license": "CC-BY-4.0",
-        }],
+        [
+            {
+                "id": "EXT-1",
+                "prompt": "What is a primary key in SQL?",
+                "answer": "A primary key uniquely identifies each row in a table.",
+                "category": "SQL",
+                "difficulty": "Beginner",
+                "keywords": "primary key, unique, row",
+                "source_name": "Example source",
+                "license": "CC-BY-4.0",
+            }
+        ],
         dataset_name="External SQL",
     )
     assert dataset.questions[0].question_id == "EXT-1"
@@ -91,7 +92,6 @@ def test_invalid_json_dataset_raises_domain_error(tmp_path) -> None:
         load_dataset(target)
 
 
-
 def test_duplicate_detection_normalizes_punctuation() -> None:
     dataset = load_default_dataset()
     item = dataset.questions[0].model_dump(mode="json")
@@ -104,27 +104,28 @@ def test_duplicate_detection_normalizes_punctuation() -> None:
         QuestionDataset(dataset_name="duplicates", questions=[item, duplicate])
 
 
-
 def test_codeprep_style_mcq_record_is_normalized() -> None:
     dataset = ingest_records(
-        [{
-            "id": "js-mcq-001",
-            "technology": "javascript",
-            "technologyName": "JavaScript",
-            "difficulty": 2,
-            "difficultyLabel": "easy",
-            "type": "MCQ_SINGLE",
-            "tags": ["array-methods"],
-            "prompt": "Which method creates a new array from a mapping callback?",
-            "answer": {
-                "options": [
-                    {"id": "a", "text": "map"},
-                    {"id": "b", "text": "forEach"},
-                ],
-                "correctOptionId": "a",
-            },
-            "explanation": "map returns a new array containing callback results.",
-        }],
+        [
+            {
+                "id": "js-mcq-001",
+                "technology": "javascript",
+                "technologyName": "JavaScript",
+                "difficulty": 2,
+                "difficultyLabel": "easy",
+                "type": "MCQ_SINGLE",
+                "tags": ["array-methods"],
+                "prompt": "Which method creates a new array from a mapping callback?",
+                "answer": {
+                    "options": [
+                        {"id": "a", "text": "map"},
+                        {"id": "b", "text": "forEach"},
+                    ],
+                    "correctOptionId": "a",
+                },
+                "explanation": "map returns a new array containing callback results.",
+            }
+        ],
         dataset_name="CodePrep import test",
         default_source_name="CodePrep",
         default_source_url="https://github.com/codeprepdev/codeprep-questions",

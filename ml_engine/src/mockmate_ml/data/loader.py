@@ -60,10 +60,7 @@ def _difficulty_label(record: dict[str, Any]) -> str:
 def _question_text(record: dict[str, Any]) -> str:
     """Build the candidate-facing prompt, including code and MCQ options."""
     prompt = (
-        record.get("question")
-        or record.get("prompt")
-        or record.get("Question")
-        or ""
+        record.get("question") or record.get("prompt") or record.get("Question") or ""
     )
     answer = record.get("answer")
     if not isinstance(answer, dict):
@@ -144,10 +141,7 @@ def normalize_external_record(
     question = _question_text(record)
     answer = _answer_text(record)
     concepts = (
-        record.get("key_concepts")
-        or record.get("keywords")
-        or record.get("tags")
-        or []
+        record.get("key_concepts") or record.get("keywords") or record.get("tags") or []
     )
     if isinstance(concepts, str):
         concepts = [part.strip() for part in concepts.split(",") if part.strip()]
@@ -182,9 +176,7 @@ def normalize_external_record(
         "CODE_OUTPUT": "coding",
         "FIND_THE_BUG": "debugging",
     }
-    question_type = type_mapping.get(
-        str(question_type).upper(), str(question_type)
-    )
+    question_type = type_mapping.get(str(question_type).upper(), str(question_type))
     topic = (
         record.get("topic")
         or record.get("category")
@@ -194,9 +186,7 @@ def normalize_external_record(
     )
     return {
         "question_id": str(
-            record.get("question_id")
-            or record.get("id")
-            or f"imported-{index:05d}"
+            record.get("question_id") or record.get("id") or f"imported-{index:05d}"
         ),
         "question": question,
         "topic": topic,

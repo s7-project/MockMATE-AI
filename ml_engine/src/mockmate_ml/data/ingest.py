@@ -20,11 +20,7 @@ def read_records(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     try:
         payload = json.loads(raw_text)
     except json.JSONDecodeError:
-        payload = [
-            json.loads(line)
-            for line in raw_text.splitlines()
-            if line.strip()
-        ]
+        payload = [json.loads(line) for line in raw_text.splitlines() if line.strip()]
 
     metadata: dict[str, Any] = {}
     if isinstance(payload, dict):

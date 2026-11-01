@@ -7,7 +7,6 @@ from uuid import uuid4
 from mockmate_ml.data.loader import load_default_dataset
 from mockmate_ml.exceptions import GenerationError, ResourceNotFoundError
 from mockmate_ml.schemas.interview import (
-    Difficulty,
     EvaluationCriterion,
     GenerationRequest,
     GenerationResult,
@@ -69,7 +68,8 @@ class QuestionRetriever:
 
     def retrieve(self, request: GenerationRequest) -> GenerationResult:
         candidates = [
-            item for item in self._dataset.questions
+            item
+            for item in self._dataset.questions
             if self._matches_topic(item, request.topic)
             and item.difficulty == request.difficulty
             and (
@@ -79,7 +79,8 @@ class QuestionRetriever:
             )
             and (
                 not request.question_types
-                or item.question_type in {
+                or item.question_type
+                in {
                     value.casefold().replace(" ", "_")
                     for value in request.question_types
                 }
@@ -116,7 +117,7 @@ class QuestionRetriever:
             self._random.shuffle(group)
             selected.extend(group)
             cursor = end
-        selected = selected[:request.count]
+        selected = selected[: request.count]
 
         questions = [
             InterviewQuestion(
