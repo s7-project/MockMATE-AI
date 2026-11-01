@@ -1,4 +1,3 @@
-
 import uuid
 
 import pytest
@@ -11,7 +10,7 @@ from app.main import app
 from app.database import Base, get_db
 
 # Import models so SQLAlchemy registers their tables with Base.metadata.
-from app.models import user  # noqa: F401
+from app import models  # noqa: F401
 
 # Use a separate in-memory SQLite database for tests.
 TEST_DATABASE_URL = "sqlite://"
@@ -127,9 +126,7 @@ def test_evaluate_answer(setup_database, auth_headers):
         headers=auth_headers,
         json={
             "question_id": question["id"],
-            "candidate_answer": (
-                "A list is mutable, whereas a tuple is immutable."
-            ),
+            "candidate_answer": ("A list is mutable, whereas a tuple is immutable."),
         },
     )
 
