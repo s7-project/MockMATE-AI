@@ -1,50 +1,62 @@
-from ml_engine.answer_evaluation.evaluator import AnswerEvaluator
-from ml_engine.question_generation.generator import QuestionGenerator
+"""Thin adapter between FastAPI routes and the independent ML package."""
+
+from uuid import UUID
+
+from mockmate_ml.exceptions import ResourceNotFoundError
+from mockmate_ml.schemas.interview import EvaluationRequest, GenerationRequest
+from mockmate_ml.services.interview_service import InterviewService
 
 
 class MLService:
-    def __init__(self):
-        self.question_generator = QuestionGenerator()
-        self.answer_evaluator = AnswerEvaluator()
+    """Preserves the existing backend method contract during migration."""
 
-    def generate_questions(self, topic="Python Basics", difficulty="Beginner", count=5):
-        return self.question_generator.get_questions(
-            topic=topic, difficulty=difficulty, count=count
+    def __init__(self, interview_service: InterviewService | None = None) -> None:
+        self.interview_service = interview_service or InterviewService()
+        self._questions: dict[str, object] = {}
+
+    def generate_questions(
+        self, topic: str = "Python Basics", difficulty: str = "Beginner", count: int = 5
+    ) -> list[dict[str, object]]:
+        result = self.interview_service.create_interview(
+            GenerationRequest(topic=topic, difficulty=difficulty, count=count)
         )
+        response: list[dict[str, object]] = []
+        for question in result.questions:
+            question_id = str(question.id)
+            self._questions[question_id] = question
+            response.append(
+                {
+                    "id": question_id,
+                    "topic": question.topic,
+                    "difficulty": question.difficulty.value,
+                    "question": question.question,
+                    "reference_answer": question.reference_answer,
+                    "keywords": question.key_concepts,
+                }
+            )
+        return response
 
-    def evaluate_answer(self, question_id, candidate_answer):
-
-        # Retrieve reference answer internally
-        question = self.question_generator.get_question_for_evaluation(question_id)
-
-        result = self.answer_evaluator.evaluate(
-            candidate_answer=candidate_answer,
-            reference_answer=question["reference_answer"],
-            keywords=question["keywords"],
+    def evaluate_answer(
+        self, question_id: str, candidate_answer: str
+    ) -> dict[str, object]:
+        question = self._questions.get(question_id)
+        if question is None:
+            raise ResourceNotFoundError(
+                "Question not found in this backend process. Generate the interview again."
+            )
+        evaluation = self.interview_service.evaluate_answer(
+            EvaluationRequest(question=question, candidate_answer=candidate_answer)
         )
-
         return {
             "question_id": question_id,
-            "question": question["question"],
+            "question": question.question,
             "candidate_answer": candidate_answer,
-            "evaluation": result,
+            "evaluation": evaluation.model_dump(mode="json"),
         }
 
-    def get_available_topics(self):
-
-        topics = {}
-
-        for question in self.question_generator.questions:
-            topic = question["topic"]
-            difficulty = question["difficulty"]
-
-            if topic not in topics:
-                topics[topic] = set()
-
-            topics[topic].add(difficulty)
-
-        return {topic: sorted(difficulties) for topic, difficulties in topics.items()}
+    def get_available_topics(self) -> dict[str, list[str]]:
+        return self.interview_service.generator.available_topics()
 
 
-# Shared service instance
+# Lightweight initialization: no transformer, audio, or video models are loaded here.
 ml_service = MLService()

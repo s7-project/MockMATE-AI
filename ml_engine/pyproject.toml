@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mockmate-ml"
+version = "0.2.0"
+description = "Interview question generation and answer evaluation engine for MockMATE"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.7,<3",
+  "pydantic-settings>=2.2,<3",
+]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=1.0,<2"]
+semantic = ["sentence-transformers>=3.0"]
+audio = ["openai-whisper"]
+video = ["opencv-python", "mediapipe"]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "pytest-mock>=3.0",
+  "ruff>=0.9",
+  "mypy>=1.10",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
